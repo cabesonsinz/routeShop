@@ -26,8 +26,15 @@ export default function products({params}:Route.ComponentProps){
             <section className="productos">
                 {
                     Object.values(data).map((obj)=>{
+
                         return ( 
-                        <div>{obj.id}</div>
+                            <>
+                                <div className="producto">
+                                    <img src={obj.image} alt="" />
+                                </div>
+
+                            </>
+
                     )
                     })
                 }

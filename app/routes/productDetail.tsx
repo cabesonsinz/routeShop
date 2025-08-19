@@ -1,5 +1,6 @@
-
+import { Link } from "react-router";
 import type { Route } from "../+types/root";
+
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     const res = await fetch(`https://fakestoreapi.com/products/${params.id}`);
@@ -14,7 +15,7 @@ export default function productDetails({ loaderData }: Route.ComponentProps) {
     const { category, description, rating, image, price, title } = loaderData;
     const {count,rate} = rating
 
-
+   
 
     return (
         <main>
@@ -30,8 +31,8 @@ export default function productDetails({ loaderData }: Route.ComponentProps) {
                         <p>CALIFICATION <b>{count} </b> SCORE <b>{rate}</b></p>
                     </div>
                     <section className="addButtons">
-                        <button className="addCart">ADD CART</button>
-                        <button className="buy">BUY</button>
+                        <button  ><Link   to={"/cart"}  state={loaderData}>ADD CART </Link></button>
+                        <button >BUY</button>
                     </section>
                 </aside>
             </section>

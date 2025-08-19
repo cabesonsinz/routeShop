@@ -1,9 +1,9 @@
 import { Link } from "react-router" 
-import type { Route } from "../+types/root"
-import { useEffect,useState } from "react"
+
+import { Fragment, useEffect,useState } from "react"
 
 
-export default function products({params}:Route.ComponentProps){
+export default function products(){
     const [data,setData] = useState({})
     //URL: https://fakestoreapi.com/
 
@@ -18,23 +18,23 @@ export default function products({params}:Route.ComponentProps){
 
     },[setData])
 
-    console.log(data)
+
     return(
         <main>
             <h1>PRODUCTS</h1>
 
             <section className="productos">
                 {
-                    Object.values(data).map((obj)=>{
-
+                    Object.values(data).map((obj:any)=>{
+        
                         return ( 
-                            <>
-                                <div className="producto">
+                            <Fragment key={obj.id}>
+                                <div className="producto" >
                                     <img src={obj.image} alt="" />
-                                    <Link className="details" to={`/products/${obj.id}`}>DETAILS</Link>
+                                    <Link className="details"  to={`/products/${obj.id}`}>DETAILS</Link>
                                 </div>
 
-                            </>
+                            </Fragment>
 
                     )
                     })
